@@ -1,0 +1,65 @@
+/**
+ * @description 
+ * @author CORTOPSAL451ZQK
+ */
+rule Rules.Test {
+	attribute {
+		priority = 5;
+		forwardChain = true;
+	}
+	declare {
+		Events.InputEve inputeve;
+		Concepts.GuardRails gr;
+	}
+	when {
+		"gr"+inputeve.AccountID+inputeve.Division == gr@extId;
+	}
+	then {
+		Object logger = Log.getLogger(Engine.ruleName());
+		Log.log(logger,"info","Rule Started");
+		String extid = inputeve.AccountID + inputeve.Division;
+		
+		try
+		{
+			//Load all concepts instances from memory.
+			Concepts.Account ac;Concepts.Customer cu;Concepts.Order or;
+			ac = Instance.getByExtId("grac"+extid);
+			cu = Instance.getByExtId("grcu"+extid);
+			or = Instance.getByExtId("gror"+extid);
+			
+				RuleFunctions.Calculations(gr);
+				//Call Exclusionary DT.
+				Log.log(logger,"info","GaurdRails Concept Before Calling Exclusionary DT:-"+Instance.serializeUsingDefaults(gr));
+				Object[] configArgs = {ac,cu,gr,or};
+				VRF.invokeAllVRFImpls("/RuleFunctions/VRF/Exclusionary",configArgs);
+				Log.log(logger,"info","SIREligible :-"+gr.SIREligible);
+				Log.log(logger,"info","Goto Inclusionary Flag :-"+gr.GotoInclusionary);
+				
+				if (gr.GotoInclusionary)
+				{
+					//Call Inclusionary DT's as Eclusionary is not met
+					
+					Object[] InconfigArgs = {ac,cu,gr,or};
+					Log.log(logger,"info","GaurdRails Concept Before Calling Inclusionary DT:-"+Instance.serializeUsingDefaults(gr));
+					VRF.invokeAllVRFImpls("/RuleFunctions/VRF/Inclusionary",InconfigArgs);
+					Log.log(logger,"info","RTCEligible :-"+gr.RTCEligible);
+					Log.log(logger,"info","FiberEligible :-"+gr.FiberEligible);
+					for (int i=0; i<gr.Result@length;i++)
+					{
+						Log.log(logger,"info","Code Returned :-"+gr.Result[i].Code);
+						//Call Backend to get Reason Codes.
+					}
+				}
+		}
+		catch (Exception e)
+		{
+			Log.log(logger,"error","Error is:- " +e@stackTrace);
+			
+		}
+		finally
+		{
+			Event.consumeEvent(inputeve);
+			Instance.deleteInstance(gr);
+		}
+	}
+}

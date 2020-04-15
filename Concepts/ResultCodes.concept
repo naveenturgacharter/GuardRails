@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<element:Concept xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:element="http:///com/tibco/cep/designtime/core/model/element" namespace="/Concepts/" folder="/Concepts/" name="ResultCodes" description="" GUID="C05463F0-7099-74A5-A2C3-804D83F64A06" ownerProjectName="GuardRails" superConceptPath="" autoStartStateMachine="true">
+  <extendedProperties/>
+  <properties name="Code" ownerProjectName="GuardRails" ownerPath="/Concepts/ResultCodes"/>
+  <properties name="BackednReasonCode" ownerProjectName="GuardRails" ownerPath="/Concepts/ResultCodes"/>
+  <properties name="RuleFired" ownerProjectName="GuardRails" ownerPath="/Concepts/ResultCodes"/>
+</element:Concept>

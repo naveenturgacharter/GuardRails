@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<element:Concept xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:element="http:///com/tibco/cep/designtime/core/model/element" namespace="/Concepts/" folder="/Concepts/" name="Order" description="" GUID="36F168E2-EA9B-E441-8687-5AFE1B35A814" ownerProjectName="GuardRails" superConceptPath="/Concepts/GuardRailsParent" autoStartStateMachine="true">
+  <extendedProperties/>
+  <properties name="OrderType" ownerProjectName="GuardRails" ownerPath="/Concepts/Order"/>
+  <properties name="OrderStatus" ownerProjectName="GuardRails" ownerPath="/Concepts/Order"/>
+  <properties name="OrderCreateDate" ownerProjectName="GuardRails" ownerPath="/Concepts/Order"/>
+  <properties name="OrderCompletionDate" ownerProjectName="GuardRails" ownerPath="/Concepts/Order"/>
+  <properties name="ResolutionCodenotDone" ownerProjectName="GuardRails" ownerPath="/Concepts/Order"/>
+  <properties name="JobCoder" ownerProjectName="GuardRails" ownerPath="/Concepts/Order"/>
+</element:Concept>

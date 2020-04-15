@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<channel:Channel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:channel="http:///com/tibco/cep/designtime/core/model/service/channel" xmlns:designtime="http:///com/tibco/cep/designtime/core/model/designtime_ontology.ecore" namespace="/Channels/" folder="/Channels/" name="InputReq" description="" GUID="7E7245AA-01CE-492F-9312-E036621CD631" ownerProjectName="GuardRails">
+  <driver configMethod="REFERENCE" reference="/SharedResources/EMSConn.sharedjmscon" label="JMS" channel="/">
+    <properties>
+      <properties xsi:type="designtime:SimpleProperty" name="ProviderURL" value="tcp://localhost:7222"/>
+      <properties xsi:type="designtime:SimpleProperty" name="UserName" value=""/>
+      <properties xsi:type="designtime:SimpleProperty" name="Password" value=""/>
+      <properties xsi:type="designtime:SimpleProperty" name="IsTransacted" value=""/>
+      <properties xsi:type="designtime:SimpleProperty" name="ClientID" value=""/>
+    </properties>
+    <destinations name="InputReq" description="" GUID="990F0214-99C5-02B6-A48D-1A896B910D99" ownerProjectName="GuardRails" eventURI="/Events/InputEve" serializerDeserializerClass="com.tibco.cep.driver.jms.serializer.BasicMessageSerializer" driverConfig="//@driver">
+      <properties>
+        <properties xsi:type="designtime:SimpleProperty" name="IsJSONPayload" value="false"/>
+        <properties xsi:type="designtime:SimpleProperty" name="IncludeEventType" value="NEVER"/>
+        <properties xsi:type="designtime:SimpleProperty" name="Queue" value="true"/>
+        <properties xsi:type="designtime:SimpleProperty" name="Name" value="sample"/>
+        <properties xsi:type="designtime:SimpleProperty" name="Selector" value=""/>
+        <properties xsi:type="designtime:SimpleProperty" name="DeliveryMode" value="2"/>
+        <properties xsi:type="designtime:SimpleProperty" name="AckMode" value="23"/>
+        <properties xsi:type="designtime:SimpleProperty" name="Priority" value="4"/>
+        <properties xsi:type="designtime:SimpleProperty" name="TTL" value="0"/>
+        <properties xsi:type="designtime:SimpleProperty" name="DurableSuscriberName" value="%%Deployment%%:%%EngineName%%:%%SessionName%%:%%ChannelURI%%:%%DestinationName%%"/>
+        <properties xsi:type="designtime:SimpleProperty" name="SharedSubscriptionName" value=""/>
+      </properties>
+    </destinations>
+    <driverType xsi:type="channel:DriverTypeInfo" driverTypeName="JMS"/>
+  </driver>
+</channel:Channel>

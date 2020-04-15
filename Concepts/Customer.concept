@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<element:Concept xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:element="http:///com/tibco/cep/designtime/core/model/element" namespace="/Concepts/" folder="/Concepts/" name="Customer" description="" GUID="6E4A0238-1D1D-F682-BBD6-3B7AAEE50A7A" ownerProjectName="GuardRails" superConceptPath="/Concepts/GuardRailsParent" autoStartStateMachine="true">
+  <extendedProperties/>
+  <properties name="FisrtName" ownerProjectName="GuardRails" ownerPath="/Concepts/Customer"/>
+  <properties name="LastName" ownerProjectName="GuardRails" ownerPath="/Concepts/Customer"/>
+  <properties name="CutomerType" ownerProjectName="GuardRails" conceptTypePath="/DomainModels/CustomerType" ownerPath="/Concepts/Customer">
+    <domainInstances resourcePath="/DomainModels/CustomerType" ownerProperty="//@properties.2"/>
+  </properties>
+</element:Concept>

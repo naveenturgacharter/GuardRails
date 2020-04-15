@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<element:Concept xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:element="http:///com/tibco/cep/designtime/core/model/element" namespace="/Concepts/" folder="/Concepts/" name="GuardRails" description="" GUID="BF1A0D41-7780-C347-1FC9-17D80D99B620" ownerProjectName="GuardRails" superConceptPath="/Concepts/GuardRailsParent" autoStartStateMachine="true">
+  <extendedProperties/>
+  <properties name="Result" ownerProjectName="GuardRails" type="ContainedConcept" conceptTypePath="/Concepts/ResultCodes" array="true" ownerPath="/Concepts/GuardRails"/>
+  <properties name="WithinProductOrderWindow" ownerProjectName="GuardRails" type="boolean" ownerPath="/Concepts/GuardRails"/>
+  <properties name="SIRIdentifier" ownerProjectName="GuardRails" type="boolean" ownerPath="/Concepts/GuardRails"/>
+  <properties name="SIREligible" ownerProjectName="GuardRails" type="boolean" ownerPath="/Concepts/GuardRails"/>
+  <properties name="PreDeterminedValid" ownerProjectName="GuardRails" type="boolean" ownerPath="/Concepts/GuardRails"/>
+  <properties name="GotoInclusionary" ownerProjectName="GuardRails" type="boolean" ownerPath="/Concepts/GuardRails"/>
+  <properties name="RTCEligible" ownerProjectName="GuardRails" type="boolean" ownerPath="/Concepts/GuardRails"/>
+  <properties name="FiberEligible" ownerProjectName="GuardRails" type="boolean" ownerPath="/Concepts/GuardRails"/>
+  <properties name="PreDeterminedCode" ownerProjectName="GuardRails" ownerPath="/Concepts/GuardRails"/>
+</element:Concept>

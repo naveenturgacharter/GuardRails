@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<element:Concept xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:element="http:///com/tibco/cep/designtime/core/model/element" namespace="/Concepts/" folder="/Concepts/" name="Account" description="" GUID="500CC5FC-B9D9-13A7-ECE0-0786BD853211" ownerProjectName="GuardRails" superConceptPath="/Concepts/GuardRailsParent" autoStartStateMachine="true">
+  <extendedProperties/>
+  <properties name="AccountType" ownerProjectName="GuardRails" ownerPath="/Concepts/Account"/>
+  <properties name="ConnectionType" ownerProjectName="GuardRails" ownerPath="/Concepts/Account"/>
+</element:Concept>

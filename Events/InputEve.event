@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<event:SimpleEvent xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:event="http:///com/tibco/cep/designtime/core/model/event" namespace="/Events/" folder="/Events/" name="InputEve" description="" GUID="F52853C8-9E85-3D12-4A06-371161EDA13E" ownerProjectName="GuardRails" superEventPath="" ttlUnits="Seconds">
+  <properties name="AccountID" ownerProjectName="GuardRails" ownerPath="/Events/InputEve"/>
+  <properties name="Division" ownerProjectName="GuardRails" ownerPath="/Events/InputEve"/>
+  <properties name="PreDeterminedCode" ownerProjectName="GuardRails" ownerPath="/Events/InputEve"/>
+  <expiryAction folder="/Events/InputEve" name="InputEve_expiryAction" ownerProjectName="GuardRails" actionText="" conditionText="">
+    <symbols>
+      <symbolList idName="inputeve" type="/Events/InputEve"/>
+    </symbols>
+  </expiryAction>
+</event:SimpleEvent>

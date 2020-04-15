@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dm:Domain xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dm="http:///com/tibco/cep/designtime/core/model/domain" namespace="/DomainModels/" folder="/DomainModels/" name="OrderStatus" description="" GUID="1EABEF67-10EB-8642-293A-693E84E6AE8A" ownerProjectName="GuardRails">
+  <entries xsi:type="dm:Single" description="OPEN" value="OPEN"/>
+  <entries xsi:type="dm:Single" description="PENDING" value="PENDING"/>
+  <entries xsi:type="dm:Single" description="COMP" value="COMP"/>
+  <entries xsi:type="dm:Single" description="COMPDIFF" value="COMPDIFF"/>
+  <entries xsi:type="dm:Single" description="CANCELLED" value="CANCELLED"/>
+</dm:Domain>

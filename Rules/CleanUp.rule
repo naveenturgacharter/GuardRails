@@ -1,0 +1,25 @@
+/**
+ * @description 
+ * @author CORTOPSAL451ZQK
+ */
+rule Rules.CleanUp {
+	attribute {
+		priority = 10;
+		forwardChain = true;
+	}
+	declare {
+		
+		Concepts.GuardRailsParent grp;
+	}
+	when {
+		
+	}
+	then {
+			Object logger = Log.getLogger(Engine.ruleName());
+			String Agenda = Engine.Rtc.printAgenda();
+			Log.log(logger,"info","Concepts in Memory to be deleted next:- "+Agenda);
+			Log.log(logger,"info","Deleting In Memory Concept:- "+grp,null);
+			Log.log(logger,"info","Deleting In Memory Concept:- "+Instance.serializeUsingDefaults(grp),null);
+			Instance.deleteInstance(grp);
+	}
+}

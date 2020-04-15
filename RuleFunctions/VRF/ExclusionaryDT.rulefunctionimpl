@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Table:Table xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:Table="http:///com/tibco/cep/decision/table/model/DecisionTable.ecore" name="ExclusionaryDT" folder="/RuleFunctions/VRF/" implements="/RuleFunctions/VRF/Exclusionary" since="BE 4.0">
+  <md>
+    <prop name="SingleRowExecution" type="Boolean" value="true"/>
+  </md>
+  <decisionTable>
+    <rule id="1">
+      <md>
+        <prop name="Description" type="String" value=""/>
+        <prop name="Priority" type="Integer" value="2"/>
+      </md>
+      <cond id="1_2" colId="2" expr="&quot;R&quot;"/>
+      <cond id="1_3" colId="3" expr="&quot;TC&quot;"/>
+      <cond id="1_4" colId="4" expr="!=&quot;CANCELLED&quot;"/>
+      <cond id="1_5" colId="5" expr="true"/>
+      <cond id="1_6" colId="6" expr="false"/>
+      <act id="1_8" colId="8" expr="System.debugOut(&quot;Rule1&quot;);"/>
+      <act id="1_9" colId="9" expr="true"/>
+    </rule>
+    <rule id="2">
+      <md>
+        <prop name="Description" type="String" value=""/>
+        <prop name="Priority" type="Integer" value="2"/>
+      </md>
+      <cond id="2_2" colId="2" expr="&quot;R&quot;"/>
+      <cond id="2_3" colId="3" expr="&quot;TC&quot;"/>
+      <cond id="2_4" colId="4" expr="(!=&quot;OPEN&quot; || != &quot;PENDING&quot;) || (==&quot;CANCELLED&quot;) "/>
+      <cond id="2_5" colId="5" expr="true"/>
+      <cond id="2_6" colId="6" expr="true"/>
+      <cond id="2_7" colId="7" expr="&quot;0&quot;"/>
+      <act id="2_8" colId="8" expr="System.debugOut(&quot;Rule2&quot;);"/>
+      <act id="2_9" colId="9" expr="true"/>
+    </rule>
+    <rule id="3">
+      <md>
+        <prop name="Description" type="String" value=""/>
+        <prop name="Priority" type="Integer" value="2"/>
+      </md>
+      <cond id="3_2" colId="2" expr="&quot;R&quot;"/>
+      <cond id="3_3" colId="3" expr="&quot;TC&quot;"/>
+      <cond id="3_4" colId="4" expr="==&quot;COMP&quot;|| ==&quot;COMPDIFF&quot;"/>
+      <cond id="3_5" colId="5" expr="true"/>
+      <cond id="3_6" colId="6" expr="true"/>
+      <cond id="3_7" colId="7" expr="&quot;1&quot;"/>
+      <act id="3_8" colId="8" expr="System.debugOut(&quot;Rule3&quot;);"/>
+      <act id="3_9" colId="9" expr="true"/>
+    </rule>
+    <rule id="4">
+      <md>
+        <prop name="Description" type="String" value=""/>
+        <prop name="Priority" type="Integer" value="1"/>
+      </md>
+      <cond id="4_1" colId="1" expr="true"/>
+      <act id="4_10" colId="10" expr="true"/>
+    </rule>
+    <columns>
+      <column id="1" name="guardrails.PreDeterminedValid" propertyPath="/Concepts/GuardRails/PreDeterminedValid" propertyType="4" columnType="CONDITION"/>
+      <column id="2" name="customer.CutomerType" propertyPath="/Concepts/Customer/CutomerType" columnType="CONDITION"/>
+      <column id="3" name="order.OrderType" propertyPath="/Concepts/Order/OrderType" columnType="CONDITION"/>
+      <column id="4" name="order.OrderStatus" propertyPath="/Concepts/Order/OrderStatus" columnType="CONDITION"/>
+      <column id="5" name="guardrails.SIRIdentifier" propertyPath="/Concepts/GuardRails/SIRIdentifier" propertyType="4" columnType="CONDITION"/>
+      <column id="6" name="guardrails.WithinProductOrderWindow" propertyPath="/Concepts/GuardRails/WithinProductOrderWindow" propertyType="4" columnType="CONDITION"/>
+      <column id="7" name="order.ResolutionCodenotDone" propertyPath="/Concepts/Order/ResolutionCodenotDone" columnType="CONDITION"/>
+      <column id="8" name="Custom Action 1" propertyPath="" columnType="CUSTOM_ACTION"/>
+      <column id="9" name="guardrails.SIREligible" propertyPath="/Concepts/GuardRails/SIREligible" propertyType="4" columnType="ACTION"/>
+      <column id="10" name="guardrails.GotoInclusionary" propertyPath="/Concepts/GuardRails/GotoInclusionary" propertyType="4" columnType="ACTION"/>
+    </columns>
+  </decisionTable>
+  <exceptionTable/>
+  <argument direction="BOTH">
+    <property path="/Concepts/Account" alias="account" resourceType="CONCEPT"/>
+  </argument>
+  <argument direction="BOTH">
+    <property path="/Concepts/Customer" alias="customer" resourceType="CONCEPT"/>
+  </argument>
+  <argument direction="BOTH">
+    <property path="/Concepts/GuardRails" alias="guardrails" resourceType="CONCEPT"/>
+  </argument>
+  <argument direction="BOTH">
+    <property path="/Concepts/Order" alias="order" resourceType="CONCEPT"/>
+  </argument>
+</Table:Table>

@@ -1,0 +1,26 @@
+/**
+ * @description 
+ */
+int rulefunction RuleFunctions.AppendCode {
+	attribute {
+		validity = ACTION;
+	}
+	scope {
+		Concepts.GuardRails gr;
+		String Code;
+		String RuleExecuted;
+	}
+	body {
+		Object logger = Log.getLogger(Engine.ruleFunctionName());
+		Log.log(logger,"info","RuleFunction Started");
+		Concepts.ResultCodes rc = Instance.newTransientInstance("/Concepts/ResultCodes");
+		
+		rc.Code = Code;
+		rc.RuleFired = RuleExecuted;
+		Log.log(logger,"info","length :- "+gr.Result@length);
+		
+		gr.Result[gr.Result@length] = rc;
+		Log.log(logger,"info","Concept Instance in RuleFunction :- "+Instance.serializeUsingDefaults(gr));
+		return 0;
+	}
+}

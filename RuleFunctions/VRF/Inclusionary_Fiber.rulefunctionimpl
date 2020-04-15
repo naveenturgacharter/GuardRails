@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Table:Table xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:Table="http:///com/tibco/cep/decision/table/model/DecisionTable.ecore" name="Inclusionary_Fiber" folder="/RuleFunctions/VRF/" implements="/RuleFunctions/VRF/Inclusionary" since="BE 4.0">
+  <decisionTable>
+    <rule id="1">
+      <cond id="1_1" colId="1" expr="&quot;SMB&quot;" displayValue="SMB"/>
+      <cond id="1_2" colId="2" expr="&quot;TC&quot;"/>
+      <cond id="1_3" colId="3" expr="&quot;Fiber&quot;"/>
+      <act id="1_4" colId="4" expr="true"/>
+      <act id="1_5" colId="5" expr="System.debugOut(&quot;Rule1 Fiber&quot;);"/>
+      <act id="1_9" colId="9" expr="int x = RuleFunctions.AppendCode(guardrails,&quot;STEE&quot;,&quot;FiberRule1&quot;)" displayValue="&quot;STEE&quot;;&quot;FiberRule1&quot;"/>
+    </rule>
+    <rule id="2">
+      <cond id="2_1" colId="1" expr="&quot;Residential&quot;||&quot;SMB&quot;" displayValue="Residential || SMB"/>
+      <cond id="2_2" colId="2"/>
+      <cond id="2_3" colId="3" expr="&quot;Fiber&quot;"/>
+      <act id="2_4" colId="4" expr="true"/>
+      <act id="2_5" colId="5" expr="System.debugOut(&quot;Rule2 Fiber&quot;);"/>
+      <act id="2_9" colId="9" expr="int x = RuleFunctions.AppendCode(guardrails,&quot;YTRE&quot;,&quot;FiberRule2&quot;)" displayValue="&quot;YTRE&quot;;&quot;FiberRule2&quot;"/>
+    </rule>
+    <columns>
+      <column id="1" name="customer.CutomerType" propertyPath="/Concepts/Customer/CutomerType" columnType="CONDITION"/>
+      <column id="2" name="order.OrderType" propertyPath="/Concepts/Order/OrderType" columnType="CONDITION"/>
+      <column id="3" name="account.AccountType" propertyPath="/Concepts/Account/AccountType" columnType="CONDITION"/>
+      <column id="4" name="guardrails.FiberEligible" propertyPath="/Concepts/GuardRails/FiberEligible" propertyType="4" columnType="ACTION"/>
+      <column id="5" name="Custom Action 1" propertyPath="" columnType="CUSTOM_ACTION"/>
+      <column id="9" substitution="true" name="int x = RuleFunctions.AppendCode(guardrails,{0},{1})" propertyPath="" columnType="CUSTOM_ACTION" alias="Append"/>
+    </columns>
+  </decisionTable>
+  <exceptionTable/>
+  <argument direction="BOTH">
+    <property path="/Concepts/Account" alias="account" resourceType="CONCEPT"/>
+  </argument>
+  <argument direction="BOTH">
+    <property path="/Concepts/Customer" alias="customer" resourceType="CONCEPT"/>
+  </argument>
+  <argument direction="BOTH">
+    <property path="/Concepts/GuardRails" alias="guardrails" resourceType="CONCEPT"/>
+  </argument>
+  <argument direction="BOTH">
+    <property path="/Concepts/Order" alias="order" resourceType="CONCEPT"/>
+  </argument>
+</Table:Table>

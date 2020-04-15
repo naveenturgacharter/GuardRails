@@ -1,0 +1,50 @@
+/**
+ * @description 
+ */
+void rulefunction RuleFunctions.Calculations {
+	attribute {
+		validity = ACTION;
+	}
+	scope {
+		Concepts.GuardRails gr;
+	}
+	body {
+		Object logger = Log.getLogger(Engine.ruleFunctionName());
+		Log.log(logger,"info","RF Started");
+		String SIRId = System.getGlobalVariableAsString("SIR_Identifiers", "PE,PF,PG,S7,EZ,TZ,88");
+		String extid = gr.AccountID + gr.Division;
+		
+		
+		//Load all concepts instances from memory.
+			Concepts.Account ac;Concepts.Customer cu;Concepts.Order or;
+			ac = Instance.getByExtId("grac"+extid);
+			cu = Instance.getByExtId("grcu"+extid);
+			or = Instance.getByExtId("gror"+extid);
+			//Write RF to check string in comma sepaaretd strings.
+			Instance.updateInstance("xslt://{{$gr}}<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<xsl:stylesheet xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\" version=\"2.0\"><xsl:param name=\"SIRId\"/><xsl:param name=\"or\"/><xsl:param name=\"gr\"/><xsl:template name=\"Function\" match=\"/\"><updateObject><object><xsl:variable name=\"var\" select=\"tokenize($SIRId, &quot;,&quot;)\"/><SIRIdentifier><xsl:value-of select=\"exists($var[.=$or/JobCoder])\"/></SIRIdentifier><PreDeterminedValid><xsl:value-of select=\"if ($gr/PreDeterminedCode = &quot;TL&quot;) then true() else false()\"/></PreDeterminedValid></object></updateObject></xsl:template></xsl:stylesheet>");
+				//calulate within 30 day window.
+				DateTime ordercreatedate,ordercompletedate;
+				if (or.OrderStatus == "OPEN")
+				{
+					DateTime ocrd = DateTime.parseString(or.OrderCreateDate,"yyyy-MM-dd");
+					ordercreatedate = DateTime.addDay(ocrd,30);
+					boolean createdaywindow = DateTime.after(ordercreatedate,DateTime.now());
+					if (createdaywindow)
+					{
+						gr.WithinProductOrderWindow = true;
+					}
+				}
+				if (or.OrderStatus == "COMP" || or.OrderStatus == "COMPDIFF")
+				{
+					DateTime ocd = DateTime.parseString(or.OrderCompletionDate,"yyyy-MM-dd");
+					ordercompletedate = DateTime.addDay(ocd,30);
+					
+					boolean completedaywindow = DateTime.after(ordercompletedate,DateTime.now());
+					if (completedaywindow)
+					{
+						gr.WithinProductOrderWindow = true;
+					}
+				}
+				Log.log(logger,"info","Within30dayWindow :-"+gr.WithinProductOrderWindow);
+	}
+}

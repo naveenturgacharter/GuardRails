@@ -1,0 +1,18 @@
+/**
+ * @description 
+ */
+virtual rulefunction RuleFunctions.VRF.Inclusionary {
+	attribute {
+		validity = ACTION;
+	}
+	scope {
+		
+		Concepts.Account account;
+		Concepts.Customer customer;
+		Concepts.GuardRails guardrails;
+		Concepts.Order order;
+	}
+	body {
+		
+	}
+}

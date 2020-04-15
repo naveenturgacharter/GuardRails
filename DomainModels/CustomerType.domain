@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dm:Domain xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dm="http:///com/tibco/cep/designtime/core/model/domain" namespace="/DomainModels/" folder="/DomainModels/" name="CustomerType" description="" GUID="9BDC4034-B879-74F0-A1B1-02C1B117E547" ownerProjectName="GuardRails">
+  <entries xsi:type="dm:Single" description="Residential" value="Residential"/>
+  <entries xsi:type="dm:Single" description="SMB" value="SMB"/>
+  <entries xsi:type="dm:Single" description="Enterprise" value="Enterprise"/>
+</dm:Domain>

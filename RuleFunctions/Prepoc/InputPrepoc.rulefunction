@@ -1,0 +1,27 @@
+/**
+ * @description 
+ */
+void rulefunction RuleFunctions.Prepoc.InputPrepoc {
+	attribute {
+		validity = ACTION;
+	}
+	scope {
+		
+		Events.InputEve inputeve;
+	}
+	body {
+		
+		Object logger = Log.getLogger(Engine.ruleFunctionName());
+		Log.log(logger,"info","RuleFunction Started");
+		Concepts.GuardRails gr = Instance.createInstance("xslt://{{/Concepts/GuardRails}}<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<xsl:stylesheet xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\" version=\"2.0\"><xsl:param name=\"inputeve\"/><xsl:template name=\"Function\" match=\"/\"><createObject><object><xsl:attribute name=\"extId\"><xsl:value-of select=\"concat(&quot;gr&quot;,$inputeve/AccountID,$inputeve/Division)\"/></xsl:attribute><xsl:if test=\"$inputeve/AccountID\"><AccountID><xsl:value-of select=\"$inputeve/AccountID\"/></AccountID></xsl:if><xsl:if test=\"$inputeve/Division\"><Division><xsl:value-of select=\"$inputeve/Division\"/></Division></xsl:if><PreDeterminedValid><xsl:value-of select=\"true()\"/></PreDeterminedValid><xsl:if test=\"$inputeve/PreDeterminedCode\"><PreDeterminedCode><xsl:value-of select=\"$inputeve/PreDeterminedCode\"/></PreDeterminedCode></xsl:if></object></createObject></xsl:template></xsl:stylesheet>");
+		Log.log(logger,"info","GaurdRails Concept Instance in Prepoc:-"+Instance.serializeUsingDefaults(gr));
+		
+		//Call AS DataGrid and get all concept data Account,Cutomer,Order
+		Concepts.Account ac = Instance.createInstance("xslt://{{/Concepts/Account}}<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<xsl:stylesheet xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\" version=\"2.0\"><xsl:param name=\"inputeve\"/><xsl:template name=\"Function\" match=\"/\"><createObject><object><xsl:attribute name=\"extId\"><xsl:value-of select=\"concat(&quot;grac&quot;,$inputeve/AccountID,$inputeve/Division)\"/></xsl:attribute><xsl:if test=\"$inputeve/AccountID\"><AccountID><xsl:value-of select=\"$inputeve/AccountID\"/></AccountID></xsl:if><xsl:if test=\"$inputeve/Division\"><Division><xsl:value-of select=\"$inputeve/Division\"/></Division></xsl:if><AccountType><xsl:value-of select=\"&quot;Fiber&quot;\"/></AccountType><ConnectionType><xsl:value-of select=\"&quot;Connect&quot;\"/></ConnectionType></object></createObject></xsl:template></xsl:stylesheet>");
+		Log.log(logger,"info","Account Concept Instance in Prepoc:-"+Instance.serializeUsingDefaults(ac));
+		Concepts.Customer cu = Instance.createInstance("xslt://{{/Concepts/Customer}}<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<xsl:stylesheet xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\" version=\"2.0\"><xsl:param name=\"inputeve\"/><xsl:template name=\"Function\" match=\"/\"><createObject><object><xsl:attribute name=\"extId\"><xsl:value-of select=\"concat(&quot;grcu&quot;,$inputeve/AccountID,$inputeve/Division)\"/></xsl:attribute><xsl:if test=\"$inputeve/AccountID\"><AccountID><xsl:value-of select=\"$inputeve/AccountID\"/></AccountID></xsl:if><xsl:if test=\"$inputeve/Division\"><Division><xsl:value-of select=\"$inputeve/Division\"/></Division></xsl:if><FisrtName><xsl:value-of select=\"&quot;Nancy&quot;\"/></FisrtName><LastName><xsl:value-of select=\"&quot;Burger&quot;\"/></LastName><CutomerType><xsl:value-of select=\"&quot;SMB&quot;\"/></CutomerType></object></createObject></xsl:template></xsl:stylesheet>");
+		Log.log(logger,"info","Customer Concept Instance in Prepoc:-"+Instance.serializeUsingDefaults(cu));
+		Concepts.Order or = Instance.createInstance("xslt://{{/Concepts/Order}}<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<xsl:stylesheet xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\" version=\"2.0\"><xsl:param name=\"inputeve\"/><xsl:template name=\"Function\" match=\"/\"><createObject><object><xsl:attribute name=\"extId\"><xsl:value-of select=\"concat(&quot;gror&quot;,$inputeve/AccountID,$inputeve/Division)\"/></xsl:attribute><xsl:if test=\"$inputeve/AccountID\"><AccountID><xsl:value-of select=\"$inputeve/AccountID\"/></AccountID></xsl:if><xsl:if test=\"$inputeve/Division\"><Division><xsl:value-of select=\"$inputeve/Division\"/></Division></xsl:if><OrderType><xsl:value-of select=\"&quot;TC&quot;\"/></OrderType><OrderStatus><xsl:value-of select=\"&quot;COMP&quot;\"/></OrderStatus><OrderCreateDate><xsl:value-of select=\"&quot;2020-01-15T13:00:00&quot;\"/></OrderCreateDate><OrderCompletionDate><xsl:value-of select=\"&quot;2020-01-15T13:00:00&quot;\"/></OrderCompletionDate><ResolutionCodenotDone><xsl:value-of select=\"1\"/></ResolutionCodenotDone></object></createObject></xsl:template></xsl:stylesheet>");
+		Log.log(logger,"info","Order Concept Instance in Prepoc:-"+Instance.serializeUsingDefaults(or));
+	}
+}
